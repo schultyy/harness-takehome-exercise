@@ -34,7 +34,7 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage
                     image: docker.io/node:22-alpine3.19
-                    shell: Bash
+                    shell: Sh
                     command: npm ci
               - step:
                   type: Run
@@ -43,5 +43,5 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage
                     image: docker.io/node:22-alpine3.19
-                    shell: Bash
+                    shell: Sh
                     command: npm run build
