@@ -1,0 +1,14 @@
+inputSet:
+  name: JS Input Set
+  identifier: JS_Input_Set
+  orgIdentifier: default
+  projectIdentifier: Jan_Schulte
+  pipeline:
+    identifier: nextjsdemorepo
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
