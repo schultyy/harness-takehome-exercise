@@ -38,10 +38,19 @@ pipeline:
                     command: npm ci
               - step:
                   type: Run
-                  name: Build
+                  name: Test
                   identifier: Build
                   spec:
                     connectorRef: account.harnessImage
                     image: docker.io/node:22-alpine3.19
                     shell: Sh
-                    command: npm run build
+                    command: npm test
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    repo: schultejan/nextjsblog
+                    tags:
+                      - latest
