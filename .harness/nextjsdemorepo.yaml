@@ -37,14 +37,11 @@ pipeline:
                     shell: Sh
                     command: npm ci
               - step:
-                  type: Run
                   name: Test
                   identifier: Build
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: docker.io/node:22-alpine3.19
-                    shell: Sh
-                    command: npm test
+                  template:
+                    templateRef: npmtest
+                    versionLabel: "1"
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
