@@ -58,6 +58,36 @@ pipeline:
                       limits:
                         memory: 2G
     - stage:
+        name: Code Scanning
+        identifier: Code_Scanning
+        description: ""
+        type: SecurityTests
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            useFromStage: Build
+          execution:
+            steps:
+              - step:
+                  type: AquaTrivy
+                  name: AquaTrivy
+                  identifier: AquaTrivy
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: container
+                      detection: auto
+                    advanced:
+                      log:
+                        level: info
+                      fail_on_severity: high
+                    privileged: true
+                    image:
+                      type: docker_v2
+                      name: schultejan/nextjsblog
+                      tag: latest
+    - stage:
         name: deploy-nextjsblog
         identifier: deploynextjsblog
         description: ""
