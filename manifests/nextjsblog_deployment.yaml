@@ -14,7 +14,8 @@ spec:
         app: nextjs-blog
     spec:
       containers:
-        - image: docker pull schultejan/nextjsblog:latest
+        - image: docker pull schultejan/nextjsblog
+          imagePullPolicy: IfNotPresent
           name: nextjs-blog
           ports:
             - containerPort: 80
