@@ -54,3 +54,6 @@ pipeline:
                     repo: schultejan/nextjsblog
                     tags:
                       - latest
+                    resources:
+                      limits:
+                        memory: 2G
